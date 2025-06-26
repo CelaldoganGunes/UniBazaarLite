@@ -1,0 +1,17 @@
+@page "{id:int}"
+@model UniBazaarLite.Pages.Events.RegisterModel
+@{
+    ViewData["Title"] = "Event Registration";
+}
+
+<h2>Register for @Model.SelectedEvent?.Title</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="AttendeeName" class="form-label">Your Name:</label>
+        <input asp-for="AttendeeName" class="form-control" />
+        <span asp-validation-for="AttendeeName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

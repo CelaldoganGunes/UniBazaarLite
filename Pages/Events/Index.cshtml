@@ -6,14 +6,27 @@
 
 <h2>@Model.SiteTitle - Upcoming Events</h2>
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
 @if (Model.Events.Any())
 {
-    <ul>
+    <ul class="list-unstyled">
     @foreach (var ev in Model.Events)
     {
-        <li>
+        <li class="mb-3">
             <strong>@ev.Title</strong> – @ev.Date.ToShortDateString()<br />
-            <small>@ev.Description</small>
+            <small>@ev.Description</small><br />
+
+            <a class="btn btn-sm btn-outline-primary mt-1"
+               asp-page="/Events/Register"
+               asp-route-id="@ev.Id">
+                Register
+            </a>
         </li>
     }
     </ul>
