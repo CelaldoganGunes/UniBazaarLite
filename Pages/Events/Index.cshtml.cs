@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 
+
 namespace UniBazaarLite.Pages.Events // ← BU SATIR ÖNEMLİ
 {
     public class IndexModel : PageModel
