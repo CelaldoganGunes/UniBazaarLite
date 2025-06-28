@@ -14,10 +14,10 @@ public class EventsController : Controller
     [HttpGet("/events/create")]
     public IActionResult Create()
     {
-
         if (!_userContext.IsAdmin)
         {
-            return RedirectToPage("/Login");
+            TempData["Message"] = "You must be an admin to create an event.";
+            return RedirectToPage("/Events/Index");
         }
 
         var newEvent = new Event
