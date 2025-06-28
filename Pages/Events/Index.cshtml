@@ -1,5 +1,6 @@
 @page
 @model UniBazaarLite.Pages.Events.IndexModel
+@inject IUserContextService UserContext
 @{
     ViewData["Title"] = "Upcoming Events";
 }
@@ -27,6 +28,16 @@
                asp-route-id="@ev.Id">
                 Register
             </a>
+
+            @if (UserContext.IsAdmin)
+            {
+                <a class="btn btn-sm btn-outline-secondary mt-1 ms-2"
+                   asp-controller="Events"
+                   asp-action="Edit"
+                   asp-route-id="@ev.Id">
+                    Edit
+                </a>
+            }
         </li>
     }
     </ul>
