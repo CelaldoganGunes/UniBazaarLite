@@ -52,6 +52,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
-
+app.UseStatusCodePagesWithRedirects("/Error");
 app.Run();
 

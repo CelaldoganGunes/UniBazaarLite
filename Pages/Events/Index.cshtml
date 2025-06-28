@@ -7,12 +7,6 @@
 
 <h2>@Model.SiteTitle - Upcoming Events</h2>
 
-@if (TempData["Message"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["Message"]
-    </div>
-}
 
 @if (Model.Events.Any())
 {

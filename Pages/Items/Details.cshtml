@@ -1,0 +1,23 @@
+@page "{id:int}"
+@model UniBazaarLite.Pages.Items.DetailsModel
+@{
+    ViewData["Title"] = "Item Details";
+}
+
+<h2>Item Details</h2>
+
+@if (Model.Item != null)
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Item.Title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.Item.Price.ToString("C")</h6>
+            <p class="card-text">@Model.Item.Description</p>
+            <p class="card-text"><small class="text-muted">Seller: @Model.Item.Seller</small></p>
+        </div>
+    </div>
+}
+else
+{
+    <p>Item not found.</p>
+}
