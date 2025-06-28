@@ -7,4 +7,5 @@ public interface IUserContextService
     bool TryLogin(string email, string password);
     void LoginAsAdmin();
     void LoginAsStudent();
+    void Logout();
 }

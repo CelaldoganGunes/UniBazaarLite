@@ -51,4 +51,11 @@ public class FakeUserContextService : IUserContextService
         _isStudent = true;
         _email = _studentEmail;
     }
+
+    public void Logout()
+    {
+        _isAdmin = false;
+        _isStudent = false;
+        _email = null;
+    }
 }
