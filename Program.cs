@@ -18,6 +18,23 @@ eventRepo.Add(new Event { Title = "Hackathon", Description = "Coding contest 2!"
 eventRepo.Add(new Event { Title = "Career Fair", Description = "Meet companies.", Date = DateTime.Today.AddDays(7) });
 
 
+var itemRepo = app.Services.GetRequiredService<IRepository<ClassifiedItem>>();
+itemRepo.Add(new ClassifiedItem
+{
+    Title = "Used Laptop",
+    Description = "i5, 8GB RAM, good condition.",
+    Price = 3500m,
+    Seller = "Ahmet"
+});
+itemRepo.Add(new ClassifiedItem
+{
+    Title = "Dorm Furniture Set",
+    Description = "Bed, desk, chair included.",
+    Price = 1200m,
+    Seller = "Zeynep"
+});
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
