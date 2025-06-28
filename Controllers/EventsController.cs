@@ -3,15 +3,23 @@ using Microsoft.AspNetCore.Mvc;
 public class EventsController : Controller
 {
     private readonly IRepository<Event> _eventRepo;
+    private readonly IUserContextService _userContext;
 
-    public EventsController(IRepository<Event> eventRepo)
+    public EventsController(IRepository<Event> eventRepo, IUserContextService userContext)
     {
         _eventRepo = eventRepo;
+        _userContext = userContext;
     }
 
     [HttpGet("/events/create")]
     public IActionResult Create()
     {
+
+        if (!_userContext.IsAdmin)
+        {
+            return RedirectToPage("/Login");
+        }
+
         var newEvent = new Event
         {
             Title = "Başlık girin.",
@@ -24,6 +32,11 @@ public class EventsController : Controller
     [HttpPost("/events/create")]
     public IActionResult Create(Event model)
     {
+        if (!_userContext.IsAdmin)
+        {
+            return RedirectToPage("/Login");
+        }
+
         if (!ModelState.IsValid)
         {
             return View(model);
@@ -34,18 +47,29 @@ public class EventsController : Controller
         return RedirectToPage("/Events/Index");
     }
 
+
     [HttpGet("/events/edit/{id}")]
+    [ServiceFilter(typeof(ValidateEntityExistsFilter<Event>))]
     public IActionResult Edit(int id)
     {
-        var ev = _eventRepo.GetById(id);
-        if (ev == null) return NotFound();
+        if (!_userContext.IsAdmin)
+        {
+            return RedirectToPage("/Login");
+        }
 
+        var ev = _eventRepo.GetById(id);
         return View(ev);
     }
 
     [HttpPost("/events/edit/{id}")]
+    [ServiceFilter(typeof(ValidateEntityExistsFilter<Event>))]
     public IActionResult Edit(int id, Event model)
     {
+        if (!_userContext.IsAdmin)
+        {
+            return RedirectToPage("/Login");
+        }
+
         if (!ModelState.IsValid)
         {
             return View(model);
