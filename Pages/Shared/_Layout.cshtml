@@ -41,7 +41,13 @@
                         <li class="nav-item"></li>
                             <a class="nav-link text-dark" asp-page="/Items/Index">Classifieds</a>
                         </li>
-                        
+
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="ItemsManagement" asp-action="Create">Create Item</a>
+                        </li>
+
+
                         @if (!UserContext.IsAdmin && !UserContext.IsStudent)
                         {
                             <li class="nav-item">

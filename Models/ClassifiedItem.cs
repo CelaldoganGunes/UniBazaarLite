@@ -5,12 +5,12 @@ public class ClassifiedItem
     public int Id { get; set; }
 
     [Required]
-    public required string Title { get; set; }
+    public string Title { get; set; } = "Unknown Title";
 
-    public required string Description { get; set; }
+    public string Description { get; set; } = "Unknown Description";
 
     [Range(0.01, double.MaxValue)]
-    public decimal Price { get; set; }
+    public decimal Price { get; set; } = 1;
 
-    public required string Seller { get; set; }
+    public string Seller { get; set; } = "Unknown Seller";
 }
