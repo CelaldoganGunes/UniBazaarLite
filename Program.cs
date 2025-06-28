@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton(typeof(IRepository<Event>), typeof(InMemoryRepository<Event>));
 builder.Services.AddSingleton(typeof(IRepository<ClassifiedItem>), typeof(InMemoryRepository<ClassifiedItem>));
+builder.Services.AddSingleton<IUserContextService, FakeUserContextService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
