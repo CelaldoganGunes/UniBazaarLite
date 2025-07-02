@@ -1,8 +1,12 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 
+// Yapımcı: Üçümüz (Celaldoğan Güneş, Burak Kılıç, Hüseyin Kaplan)
+// Authentication, filter ve global uygulanan kesişen işler ortak geliştirilmiştir.
+// Bu filter, MVC Controller ve Razor Page isteklerini konsola loglar.
+
 public class LogActivityFilter : IActionFilter, IPageFilter
 {
-    // MVC Controller action'lar için
+    // MVC Controller action'lar çalıştırılmadan önce tetiklenir
     public void OnActionExecuting(ActionExecutingContext context)
     {
         var path = context.HttpContext.Request.Path;
@@ -10,12 +14,13 @@ public class LogActivityFilter : IActionFilter, IPageFilter
         Console.WriteLine($"[LogActivity] MVC Controller Request to: {path}{query}");
     }
 
+    // MVC Controller action çalıştıktan sonra tetiklenir (biz burada boş bıraktık)
     public void OnActionExecuted(ActionExecutedContext context)
     {
         // no-op
     }
 
-    // Razor Page handler'lar için
+    // Razor Page handler çalıştırılmadan önce tetiklenir
     public void OnPageHandlerExecuting(PageHandlerExecutingContext context)
     {
         var path = context.HttpContext.Request.Path;
