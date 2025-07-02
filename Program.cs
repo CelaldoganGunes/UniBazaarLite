@@ -1,14 +1,10 @@
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddRazorPages();
 builder.Services.AddSingleton(typeof(IRepository<Event>), typeof(InMemoryRepository<Event>));
 builder.Services.AddSingleton(typeof(IRepository<ClassifiedItem>), typeof(InMemoryRepository<ClassifiedItem>));
 builder.Services.AddSingleton<IUserContextService, FakeUserContextService>();
 builder.Services.AddScoped(typeof(ValidateEntityExistsFilter<>));
-//builder.Services.AddControllersWithViews();
 
 builder.Services.AddControllersWithViews(options =>
 {
